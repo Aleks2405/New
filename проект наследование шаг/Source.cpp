@@ -1,0 +1,62 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+/*«адание 2.
+—оздайте абстрактный класс Shape дл€ рисовани€ плоских 
+фигур. ќпределите виртуальные методы:
+Х	 Show() Ч вывод на экран информации о фигуре,
+Х	 Save() Ч сохранение фигуры в файл,
+Х	 Load() Ч считывание фигуры из файла.
+ќпределите производные классы: 
+Х	 Square Ч квадрат, который характеризуетс€ координатами левого верхнего угла и длиной стороны;
+Х	 Rectangle Ч пр€моугольник с заданными координатами верхнего левого угла и размерами;
+Х	 Circle Ч окружность с заданными координатами центра и радиусом;
+Х	 Ellipse Ч эллипс с заданными координатами верхнего угла описанного вокруг него пр€моугольника 
+со сторонами, параллельными ос€м координат, и размерами этого пр€моугольника.
+—оздайте массив фигур, сохраните фигуры в файл, загрузите в другой массив и отобразите информацию о каждой 
+из фигур.*/
+class Shape {
+protected:
+	string slov;
+public:
+	virtual void Show() = 0;
+	virtual void Save() = 0;
+	virtual void Load(const char* part) = 0;
+};
+class Square : public Shape {   // квадрат
+	//char** arr;
+	int dlina;
+public:
+	Square(int a) : dlina(a){}
+	virtual void Show() {
+			char** arr = new char* [dlina];
+			for (int i = 0; i < dlina; i++) {
+				arr[i] = new char[dlina];
+				for (int j = 0; j < dlina; j++) {
+					arr[i][j] = '*';
+					cout << arr[i][j] << " ";
+				} cout << endl;
+			}	
+		}
+	
+	 virtual void Save() {}
+     virtual void Load(const char* part) {
+		ifstream fail(part);
+		fail >> slov;
+		fail.close();
+		
+	}
+};
+class Rectangle : public Shape {
+
+};
+
+
+int main() {
+	Square one(5);
+	one.Show();
+
+
+
+}
