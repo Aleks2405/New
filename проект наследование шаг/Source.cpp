@@ -56,7 +56,6 @@ class Rectangle : public Shape {
 int main() {
 	Square one(5);
 	one.Show();
-
-
+// заново вспоминаем гид
 
 }
