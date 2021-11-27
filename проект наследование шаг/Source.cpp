@@ -16,12 +16,13 @@ using namespace std;
 со сторонами, параллельными осям координат, и размерами этого прямоугольника.
 Создайте массив фигур, сохраните фигуры в файл, загрузите в другой массив и отобразите информацию о каждой 
 из фигур.*/
+
 class Shape {
 protected:
 	string slov;
 public:
 	virtual void Show() = 0;
-	virtual void Save() = 0;
+	virtual void Save(const char* part) = 0;
 	virtual void Load(const char* part) = 0;
 };
 class Square : public Shape {   // квадрат
@@ -40,10 +41,31 @@ public:
 			}	
 		}
 	
-	 virtual void Save() {}
+	 virtual void Save(const char* part) {
+		 ofstream fail;
+		 fail.open(part, ios::app);
+		 char** arr = new char* [dlina];
+		 for (int i = 0; i < dlina; i++) {
+			 arr[i] = new char[dlina];
+			 for (int j = 0; j < dlina; j++) {
+				 arr[i][j] = '*';
+				 fail << arr[i][j] << " ";
+			 } fail << endl;
+		 }
+		 fail.close();
+	 }
+
      virtual void Load(const char* part) {
-		ifstream fail(part);
-		fail >> slov;
+		ifstream fail;
+		
+		fail.open(part);
+		//fail >> *slov;
+		int i = 0;
+		while (getline (fail, slov)) {
+			i++;
+			cout << slov << endl;
+		}
+		
 		fail.close();
 		
 	}
@@ -56,6 +78,8 @@ class Rectangle : public Shape {
 int main() {
 	Square one(5);
 	one.Show();
-// заново вспоминаем гид
+	one.Save("kv.txt");
+	one.Load("kv.txt");
+
 
 }
