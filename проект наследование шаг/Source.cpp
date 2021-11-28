@@ -13,14 +13,14 @@ using namespace std;
 Х	 Rectangle Ч пр€моугольник с заданными координатами верхнего левого угла и размерами;
 Х	 Circle Ч окружность с заданными координатами центра и радиусом;
 Х	 Ellipse Ч эллипс с заданными координатами верхнего угла описанного вокруг него пр€моугольника 
-со сторонами, параллельными ос€м координат, и размерами этого пр€моугольника.
-—оздайте массив фигур, сохраните фигуры в файл, загрузите в другой массив и отобразите информацию о каждой 
+со сторонами, параллельными ос€м координат, и размерами этого пр€моугольника.
+—оздайте массив фигур, сохраните фигуры в файл, загрузите в другой массив и отобразите информацию о каждой 
 из фигур.*/
 
 class Shape {
-protected:
-	string slov;
+	//int lordinata = 0;
 public:
+	Shape(){}
 	virtual void Show() = 0;
 	virtual void Save(const char* part) = 0;
 	virtual void Load(const char* part) = 0;
@@ -55,31 +55,60 @@ public:
 		 fail.close();
 	 }
 
-     virtual void Load(const char* part) {
+     /*virtual void Load(const char* part) {
 		ifstream fail;
-		
+		char line[128];
 		fail.open(part);
 		//fail >> *slov;
 		int i = 0;
-		while (getline (fail, slov)) {
-			i++;
-			cout << slov << endl;
-		}
+		fail.getline(line, 128);
+		
 		
 		fail.close();
-		
-	}
+	}*/
 };
 class Rectangle : public Shape {
+	int dlina;
+	int vusota;
+public:
+	Rectangle(int a, int b) : dlina(a),vusota(b){}
 
+	virtual void Show() {
+		char** arr = new char* [dlina];
+		for (int i = 0; i < dlina; i++) {
+			arr[i] = new char[vusota];
+			for (int j = 0; j < vusota; j++) {
+				arr[i][j] = '*';
+				cout << arr[i][j] << " ";
+			} cout << endl;
+		}
+	}
+	virtual void Save(const char* part) {
+		ofstream fail;
+		fail.open(part, ios::app);
+		char** arr = new char* [dlina];
+		for (int i = 0; i < dlina; i++) {
+			arr[i] = new char[vusota];
+			for (int j = 0; j < vusota; j++) {
+				arr[i][j] = '*';
+				fail << arr[i][j] << " ";
+			} fail << endl;
+		}
+		fail.close();
+	}
 };
 
 
 int main() {
-	Square one(5);
-	one.Show();
-	one.Save("kv.txt");
-	one.Load("kv.txt");
+	//Square one(5);
+	//one.Show();
+	//one.Save("kv.txt");
+	//one.Load("kv.txt");
+	Rectangle two (10, 5);
+	two.Show();
+	two.Save("kv.txt");
+	//two.Load("kv.txt");
+	
 
 
 }
