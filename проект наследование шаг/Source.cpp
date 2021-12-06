@@ -93,14 +93,14 @@ public:
 
 
 int main() {
-	Square one(5);
-	one.Show();
-	one.Save("kv.txt");
-	one.Load("kv.txt");
-	//Rectangle two (5,10);
-	//two.Show();
-	//two.Save("kv.txt");
-	//two.Load("kv.txt");
+	//Square one(5);
+	//one.Show();
+	//one.Save("kv.txt");
+	//one.Load("kv.txt");
+	Rectangle two (5,10);
+	two.Show();
+	two.Save("kv.txt");
+	two.Load("kv.txt");
 	
 
 
