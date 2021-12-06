@@ -21,14 +21,14 @@ class Shape {
 	
 public:
 	Shape(){}
-	virtual void Show() = 0;
+	virtual void Show() const = 0;
 	virtual void Save() = 0;
 	virtual void Load() = 0;
 };
 class Square : public Shape {   // квадрат
 	int dlina;
 public:
-	Square() : Shape() {}
+	Square(){}
 	Square(int a) : dlina(a){}
 	virtual void Show() {
 			for (int i = 0; i < dlina; i++) {
@@ -94,13 +94,15 @@ public:
 int main() {
 	//Square one(5);
 	//one.Show();
-	//cout << endl;
 	//one.Save("kv.txt");
 	//one.Load("kv.txt");
+
+	//cout << endl;
 	Rectangle two(5,10);
 	two.Show();
 	//two.Save("kv.txt");
 	//two.Load("kv.txt");
+
 	
 
 
