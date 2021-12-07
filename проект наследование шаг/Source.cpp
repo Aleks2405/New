@@ -45,7 +45,7 @@ public:
 			 for (int j = 0; j < dlina; j++) {
 				 fail << "*" << " ";
 			 } fail << endl;
-		 }
+		 }   fail << endl;
 		 fail.close();
 	 }
 
@@ -77,7 +77,7 @@ public:
 				for (int j = 0; j < vusota; j++) {
 					fail << "*" << " ";
 				} fail << endl;
-			}
+			}  
 			fail.close();
 		}
 		virtual void Load(){}
