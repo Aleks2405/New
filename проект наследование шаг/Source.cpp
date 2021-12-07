@@ -85,6 +85,15 @@ public:
 };
 class Circle : public Shape {
 public:
+	virtual void Show(){}
+	virtual void Save(){}
+	virtual void Load(){}
+};
+class Ellipse :public Shape {
+public:
+	virtual void Show() {}
+	virtual void Save() {}
+	virtual void Load() {}
 };
 
 
@@ -102,6 +111,8 @@ int main() {
 	two.Show();
 	two.Save();
 	two.Load();
+    
+
 	
 
 	
