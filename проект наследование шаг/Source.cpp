@@ -85,8 +85,7 @@ public:
 
 
 int main() {
-	ofstream fail;
-	fail.open("kv.txt", ios::in);
+	
 
 	//Square one(5);
 	//one.Show();
