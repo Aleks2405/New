@@ -21,7 +21,7 @@ class Shape {
 	
 public:
 	Shape(){}
-	virtual void Show() const = 0;
+	virtual void Show() = 0;
 	virtual void Save() = 0;
 	virtual void Load() = 0;
 };
@@ -41,11 +41,8 @@ public:
 	 virtual void Save()  {
 		 ofstream fail;
 		 fail.open("kv.txt", ios::app);
-		 //char** arr = new char* [dlina];
 		 for (int i = 0; i < dlina; i++) {
-			// arr[i] = new char[dlina];
 			 for (int j = 0; j < dlina; j++) {
-				// arr[i][j] = '*';
 				 fail << "*" << " ";
 			 } fail << endl;
 		 }
@@ -56,13 +53,12 @@ public:
 		ifstream fail;
 		char line[128];
 		fail.open("kv.txt");
-		//fail >> *slov;
 		int i = 0;
 		fail.getline(line, 128);
 		fail.close();
 	}
 };
-class Rectangle : public Shape {
+class Rectangle : public Square {
 	int dlina;
 	int vusota;
 public:
@@ -77,12 +73,9 @@ public:
 		virtual void Save() {
 			ofstream fail;
 			fail.open("kv.txt", ios::app);
-			char** arr = new char* [dlina];
 			for (int i = 0; i < dlina; i++) {
-				arr[i] = new char[vusota];
 				for (int j = 0; j < vusota; j++) {
-					arr[i][j] = '*';
-					fail << arr[i][j] << " ";
+					fail << "*" << " ";
 				} fail << endl;
 			}
 			fail.close();
@@ -92,15 +85,15 @@ public:
 
 
 int main() {
-	//Square one(5);
-	//one.Show();
-	//one.Save("kv.txt");
-	//one.Load("kv.txt");
+	Square one(5);
+	one.Show();
+	one.Save();
+	//one.Load();
 
-	//cout << endl;
-	Rectangle two(5,10);
+	cout << endl;
+	Rectangle two (5,10);
 	two.Show();
-	//two.Save("kv.txt");
+	two.Save();
 	//two.Load("kv.txt");
 
 	
