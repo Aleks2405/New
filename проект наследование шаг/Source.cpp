@@ -85,15 +85,18 @@ public:
 
 
 int main() {
-	Square one(5);
-	one.Show();
-	one.Save();
+	ofstream fail;
+	fail.open("kv.txt", ios::in);
+
+	//Square one(5);
+	//one.Show();
+	//one.Save();
 	//one.Load();
 
-	cout << endl;
-	Rectangle two (5,10);
-	two.Show();
-	two.Save();
+	//cout << endl;
+	//Rectangle two (5,10);
+	//two.Show();
+	//two.Save();
 	//two.Load("kv.txt");
 
 	
