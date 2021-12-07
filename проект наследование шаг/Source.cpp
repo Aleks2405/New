@@ -22,8 +22,8 @@ class Shape {
 public:
 	Shape(){}
 	virtual void Show() = 0;
-	virtual void Save() = 0;
-	virtual void Load() = 0;
+	virtual void Save(const char*part) = 0;
+	virtual void Load(const char* part) = 0;
 };
 class Square : public Shape {   // êâàäðàò
 	int dlina;
@@ -38,9 +38,9 @@ public:
 			}	
 		}
 	
-	 virtual void Save()  {
+	 virtual void Save(const char* part)  {
 		 ofstream fail;
-		 fail.open("kv.txt", ios::app);
+		 fail.open(part, ios::app);
 		 for (int i = 0; i < dlina; i++) {
 			 for (int j = 0; j < dlina; j++) {
 				 fail << "*" << " ";
@@ -49,10 +49,10 @@ public:
 		 fail.close();
 	 }
 
-     virtual void Load() {
+     virtual void Load(const char* part) {
 		ifstream fail;
 		char line[128];
-		fail.open("kv.txt");
+		fail.open(part);
 		int i = 0;
 		fail.getline(line, 128);
 		fail.close();
@@ -70,9 +70,9 @@ public:
 				} cout << endl;
 			}
 		}
-		virtual void Save() {
+		virtual void Save(const char* part) {
 			ofstream fail;
-			fail.open("kv.txt", ios::app);
+			fail.open(part, ios::app);
 			for (int i = 0; i < dlina; i++) {
 				for (int j = 0; j < vusota; j++) {
 					fail << "*" << " ";
@@ -80,20 +80,20 @@ public:
 			}  
 			fail.close();
 		}
-		virtual void Load(){}
+		virtual void Load(const char* part){}
 		
 };
 class Circle : public Shape {
 public:
 	virtual void Show(){}
-	virtual void Save(){}
-	virtual void Load(){}
+	virtual void Save(const char* part) {}
+	virtual void Load(const char* part){}
 };
 class Ellipse :public Shape {
 public:
 	virtual void Show() {}
-	virtual void Save() {}
-	virtual void Load() {}
+	virtual void Save(const char* part) {}
+	virtual void Load(const char* part) {}
 };
 
 
@@ -102,15 +102,15 @@ int main() {
 
 	Square one(5);
 	one.Show();
-	one.Save();
-	one.Load();
+	one.Save("kv.txt");
+	one.Load("kv.txt");
 
 	cout << endl;
 
 	Rectangle two (5,10);
 	two.Show();
-	two.Save();
-	two.Load();
+	two.Save("kv.txt");
+	two.Load("kv.txt");
     
 
 	
