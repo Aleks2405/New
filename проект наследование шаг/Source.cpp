@@ -54,9 +54,10 @@ public:
 		ifstream fail;
 		string line;
 		fail.open(part);
-		int i = 0;
-		getline(fail,line);
-		cout << line << "tut" << endl;
+		getline(fail, line); //считывает пустую строку
+		for (int i = 0; i < dlina; i++) {
+			getline(fail, line);
+		}
 		fail.close();
 	}
 };
@@ -82,7 +83,17 @@ public:
 			}  
 			fail.close();
 		}
-		virtual void Load(const char* part){}
+		virtual void Load(const char* part){
+			ifstream fail;
+			string line;
+			fail.open(part);
+			getline(fail, line);
+			for (int i = 0; i < vusota; i++) {	
+				getline(fail, line); //считывает пустую строку
+			}
+
+			fail.close();
+		}
 		
 };
 class Circle : public Shape {
@@ -109,10 +120,10 @@ int main() {
 
 	cout << endl;
 
-	//Rectangle two (5,10);
-	//two.Show();
-	//two.Save("kv.txt");
-	//two.Load("kv.txt");
+	Rectangle two (5,10);
+	two.Show();
+	two.Save("kv.txt");
+	two.Load("kv.txt");
     
 
 	
