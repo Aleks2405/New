@@ -128,9 +128,9 @@ public:
 		di = 1.0 / R;
 		for (int i = int(R); i >= -int(R); --i) {
 			n = static_cast<int>(cos(asin(di * abs(int(i)))) * R);
-			for (unsigned j = 0; j <= R - n; ++j) fail << " ";
+			for (unsigned j = 0; j <= R - n; ++j);
 		    fail << "*";
-			for (unsigned j = 0; j < 2 * n; ++j)fail << " ";
+			for (unsigned j = 0; j < 2 * n; ++j);
 			fail << "*\n";
 
 		}
