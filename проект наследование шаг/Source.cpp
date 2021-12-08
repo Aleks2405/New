@@ -1,8 +1,7 @@
 ﻿#include <iostream>
 #include <fstream>
 #include <string>
-#include <cmath>
-#include <cstdlib>
+
 
 using namespace std;
 /*Задание 2.
@@ -28,7 +27,7 @@ public:
 	virtual void Save(const char*part) = 0;
 	virtual void Load(const char* part) = 0;
 };
-class Square : public Shape {   // êâàäðàò
+class Square : public Shape {   // квадрат
 	int dlina;
 public:
 	Square(){}
@@ -63,7 +62,7 @@ public:
 		fail.close();
 	}
 };
-class Rectangle : public Shape {
+class Rectangle : public Shape { //прямоугольник
 	int dlina;
 	int vusota;
 public:
@@ -98,14 +97,14 @@ public:
 		}
 		
 };
-class Circle : public Shape {
+class Circle : public Shape {  //круг
 	size_t R;	
 public:
 	Circle(size_t a) : R(a){}
 
 	virtual void Show(){
-		unsigned n;
-		size_t N;
+		unsigned n; // решил создать переменные в функции, возможно не верное решение но по другому мне не понравилось
+		size_t N;  //тип данных, способный представлять размер любого объекта в байтах
 		double di;
 		N = 2 * R;
 		di = 1.0 / R;
@@ -139,15 +138,14 @@ public:
 		ifstream fail;
 		string line;
 		fail.open(part);
-		//getline(fail, line);
-		for (int i = 0; i < int(R*2)+1; i++) {
+		for (int i = 0; i < int(R*2)+1; i++) { //придумал так работает, по другому что то не получилось
 			getline(fail, line);		
 		}
 		fail.close();
 	}
 	
 };
-class Ellipse :public Shape {
+class Ellipse :public Shape { // элипс, но не знаю как сделать ((( 
 public:
 	virtual void Show() {}
 	virtual void Save(const char* part) {}
