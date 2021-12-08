@@ -128,15 +128,22 @@ public:
 		di = 1.0 / R;
 		for (int i = int(R); i >= -int(R); --i) {
 			n = static_cast<int>(cos(asin(di * abs(int(i)))) * R);
-			for (unsigned j = 0; j <= R - n; ++j);
-		    fail << "*";
-			for (unsigned j = 0; j < 2 * n; ++j);
+			for (unsigned j = 0; j <= R - n; ++j) fail << " ";
+			fail << "*";
+			for (unsigned j = 0; j < 2 * n; ++j) fail << " ";
 			fail << "*\n";
-
-		}
+		} fail << endl;
 		fail.close();
 	}
 	virtual void Load(const char* part){
+		ifstream fail;
+		string line;
+		fail.open(part);
+		//getline(fail, line);
+		for (int i = 0; i < int(R*2)+1; i++) {
+			getline(fail, line);		
+		}
+		fail.close();
 	}
 	
 };
@@ -156,17 +163,20 @@ int main() {
 	one.Save("kv.txt");
 	one.Load("kv.txt");
 
-	//cout << endl;
+	cout << endl;
 
-	//Rectangle two (5,10);
-	//two.Show();
-	//two.Save("kv.txt");
-	//two.Load("kv.txt");
-	//Circle thee(3);
-	//thee.Show();
-	//thee.Save("kv.txt");
-	//
-	//
+	Rectangle two (5,10);
+	two.Show();
+	two.Save("kv.txt");
+	two.Load("kv.txt");
+	
+	cout << endl;
+	
+	Circle thee(3);
+	thee.Show();
+	thee.Save("kv.txt");
+	thee.Load("kv.txt");
+	
 
 	
 
